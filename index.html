@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine's Day My Love ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Container for text and image */
+.container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+/* Headings and text */
+h1 {
+  font-size: clamp(28px, 5vw, 50px);
+  margin-bottom: 20px;
+  animation: fadeIn 3s ease-in-out;
+}
+
+p {
+  font-size: clamp(16px, 2.5vw, 24px);
+  margin: auto;
+  margin-top: 20px;
+  line-height: 1.5;
+  white-space: pre-line;
+  animation: fadeIn 5s ease-in-out;
+  font-weight: bold;
+}
+
+/* Image styling */
+img {
+  width: 300px; 
+  border-radius: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 20px rgba(255,75,92,0.5);
+  animation: floatImage 3s ease-in-out infinite alternate;
+}
+
+/* Floating image animation */
+@keyframes floatImage {
+  0% {transform: translateY(0px);}
+  100% {transform: translateY(-10px);}
+}
+
+/* Button styling */
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  background-color: white;
+  color: #ff4b5c;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 75, 92, 0.5);
+}
+
+button:hover {
+  background-color: #ff4b5c;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 75, 92, 0.8);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Floating Hearts & Kisses */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float linear infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh) scale(0.5);}
+  50% {transform: translateY(50vh) scale(1);}
+  100% {transform: translateY(-10vh) scale(0.7);}
+}
+
+/* Popup overlay */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.popup-content {
+  background: #ff6b81;
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  max-width: 90%;
+}
+
+.popup button {
+  margin: 10px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Panda punch animation */
+#panda {
+  position: fixed;
+  bottom: 0;
+  left: -200px;
+  width: 150px;
+  z-index: 20;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Punch effect animation */
+#punchEffect {
+  position: absolute;
+  font-size: 40px;
+  color: yellow;
+  left: 120px;
+  top: 40px;
+  opacity: 0;
+  animation: punchImpact 0.6s forwards;
+}
+
+@keyframes punchImpact {
+  0% {opacity: 0; transform: scale(0);}
+  50% {opacity: 1; transform: scale(1.2);}
+  100% {opacity: 0; transform: scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Happy Valentine's Day My Love ❤️</h1>
+
+  <!-- Valentine image -->
+  <img src="lovephoto.png" alt="My Valentine">
+
+  <p>💕</p>
+
+  <button onclick="showPopup()">Surprise 💖</button>
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h2>Will you be my Valentine forever?</h2>
+    <button onclick="valentineYes()">Yes 😘</button>
+    <button onclick="valentineNo()">No 😏</button>
+  </div>
+</div>
+
+<!-- Panda -->
+<img id="panda" src="panda-punch.png" alt="Panda Punch">
+
+<script>
+// Show popup
+function showPopup() {
+  document.getElementById("popup").style.visibility = "visible";
+}
+
+// Yes button - romantic message
+function valentineYes() {
+  document.getElementById("popup").style.visibility = "hidden";
+
+  const romanticMessages = [
+    "I LOVE YOU SO MUCH KANNODA 😘",
+    "You’re my forever love ❤️",
+    "I can’t stop smiling because of you 💕"
+  ];
+
+  const msg = romanticMessages[Math.floor(Math.random() * romanticMessages.length)];
+  alert(msg);
+
+  startHearts(["❤️", "😘", "💋", "💞"]);
+}
+
+// No button - multiple funny messages sequentially + panda punch
+function valentineNo() {
+  document.getElementById("popup").style.visibility = "hidden";
+
+  const funnyMessages = [
+    "You don't have options 😂",
+    "Oops! You'll regret it 😜",
+    "Are you serious?! 😏",
+    "Fine, more chocolates for me 🍫😎",
+    "Uh-oh… I’m starting my dramatic heartbreak 😢💔"
+  ];
+
+  // Show messages one by one
+  let index = 0;
+
+  function showNextFunnyMessage() {
+    if (index < funnyMessages.length) {
+      alert(funnyMessages[index]);
+      index++;
+      setTimeout(showNextFunnyMessage, 200); // small delay before next
+    } else {
+      // All messages done → show panda punch
+      showPandaPunch();
+    }
+  }
+
+  showNextFunnyMessage();
+
+  startHearts(["💔", "😏", "😂"]);
+}
+
+// Panda punch function
+function showPandaPunch() {
+  const panda = document.getElementById("panda");
+  panda.style.left = "50px"; // panda comes in
+
+  setTimeout(() => {
+    // Punch hand effect
+    const punchEffect = document.createElement("div");
+    punchEffect.id = "punchEffect";
+    punchEffect.innerHTML = "👊💥";
+    panda.appendChild(punchEffect);
+
+    setTimeout(() => {
+      punchEffect.remove();
+      panda.style.left = "-200px"; // panda goes out
+    }, 600);
+  }, 500);
+}
+
+// Floating hearts/kisses
+function startHearts(symbols) {
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 35) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.opacity = 0.6 + Math.random() * 0.4;
+    heart.style.color = `hsl(${Math.random() * 30 + 330}, 100%, 70%)`;
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+  }
+  setInterval(createHeart, 150);
+}
+</script>
+
+</body>
+</html>
